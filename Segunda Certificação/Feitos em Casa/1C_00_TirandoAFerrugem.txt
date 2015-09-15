@@ -1,0 +1,21 @@
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int w = int.Parse(Console.ReadLine());;
+            int e = 0;
+            int aux_e = 0;
+            while (w != 0)
+            {
+                e += w;
+                w = int.Parse(Console.ReadLine());
+                aux_e++;
+            }
+            Console.WriteLine(e/aux_e);
+        }
+    }
+}
+
+[segunda parte]

@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            Funcionário f;
+            f = new Funcionário();
+
+            // Trecho das Entradas
+            
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Funcionário {0}", i + 1);
+                nome[i] = Console.ReadLine();
+                cpf[i] = Console.ReadLine();
+                DataNasc[i] = Console.ReadLine();
+                salário[i] = int.Parse(Console.ReadLine());
+                dataAdmissão[i] = int.Parse(Console.ReadLine());
+            }
+            
+            // Trecho dos Calculos
+           
+            for (int i = 0; i < n; i++)
+            {
+                if (dataAdmissão[i] >= 2014)
+                    novoSalario[i] = salário[i] + 423.45;
+                if (dataAdmissão[i] >= 2010 && dataAdmissão[i] <= 2013)
+                    novoSalario[i] = salário[i] * 1.0984;
+                if (dataAdmissão[i] >= 2000 && dataAdmissão[i] <= 2009)
+                    novoSalario[i] = salário[i] * 1.164;
+                if (dataAdmissão[i] <= 1999)
+                    novoSalario[i] = salário[i] * 1.226;
+             }
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Funcionário {0}", i + 1);
+                Console.WriteLine("CPF: {0}", cpf[i]);
+                Console.WriteLine("Nome: {0}", nome[i]);
+                Console.WriteLine("Nasc: {0}", DataNasc[i]);
+                Console.WriteLine("Adms: {0}", dataAdmissão[i]);
+                Console.WriteLine("Salario Atual: R${0}", salário[i]);
+                Console.WriteLine("Novo Salario: R${0}", novoSalario[i]);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+PARTE 2
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    public class Funcionário
+    {
+        public string nome;
+        string cpf;
+        string DataNasc;
+        int salario;
+        int dataAdmissao;
+        double novoSalario;
+
+        public double CalculaAumento()
+        {
+            if (dataAdmissao >= 2014)
+                novoSalario = salario + 423.45;
+            if (dataAdmissao >= 2010 && dataAdmissao <= 2013)
+                novoSalario = salario * 1.0984;
+            if (dataAdmissao >= 2000 && dataAdmissao <= 2009)
+                novoSalario = salario * 1.164;
+            if (dataAdmissao <= 1999)
+                novoSalario = salario * 1.226;
+            return (novoSalario);
+        }
+    }
+}
