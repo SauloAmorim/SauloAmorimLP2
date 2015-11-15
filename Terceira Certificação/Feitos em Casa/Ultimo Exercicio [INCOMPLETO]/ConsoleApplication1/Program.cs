@@ -22,6 +22,7 @@ namespace ConsoleApplication1
             senha = Console.ReadLine();
             u.senha = senha;
 
+            string consulta = "SELECT * FROM usuario WHERE login ='" + u.login +"' and senha ='" + u.senha + "'";
             bool query = false;
             int opcoes = 0;
             
@@ -30,14 +31,14 @@ namespace ConsoleApplication1
             MySqlConnection conn = new MySqlConnection(strConn);
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT login FROM usuario";
+            cmd.CommandText = consulta;
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0} \r\nNome:{1}\r\nSenha:{2}\r\nEmail:{3}\r\nLogin:{4}\r\nUltimo Login:{5} ",reader.GetInt32(0),reader.GetString(1),reader.GetString(2),reader.GetChar(3),reader.GetString(4),reader.GetDateTime(5));
+                    Console.WriteLine("{0} \r\nNome:{1}\r\nSenha:{2}\r\nEmail:{3}\r\nLogin:{4}\r\nUltimo Login:{5} ",reader.GetInt32(0),reader.GetString(1),reader.GetString(2),reader.GetString(3),reader.GetString(4),reader.GetDateTime(5));
                 }
             }
             reader.Close();
